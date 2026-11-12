@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | QA Practice</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="login">
+  <main class="page">
+    <section class="card" aria-labelledby="login-title">
+      <h1 id="login-title" data-testid="login-title">Login</h1>
+      <p class="subtitle" id="login-subtitle" data-testid="login-subtitle">
+        Sign in to continue to your dashboard.
+      </p>
+
+      <!-- data-state is updated by script.js: idle | submitting | error | locked | success -->
+      <form id="login-form" data-testid="login-form" data-state="idle" novalidate>
+
+        <div class="field">
+          <label for="email-input">Email</label>
+          <input type="email" id="email-input" data-testid="email-input" name="email"
+                 autocomplete="email" placeholder="you@example.com"
+                 aria-invalid="false" aria-describedby="email-error" />
+          <p class="field-error" id="email-error" data-testid="email-error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="password-input">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password-input" data-testid="password-input" name="password"
+                   autocomplete="current-password" placeholder="At least 8 characters"
+                   aria-invalid="false" aria-describedby="password-error" />
+            <button type="button" id="toggle-password-btn" data-testid="toggle-password-btn"
+                    class="toggle-btn" aria-controls="password-input" aria-pressed="false"
+                    aria-label="Show password">Show</button>
+          </div>
+          <p class="field-error" id="password-error" data-testid="password-error" aria-live="polite"></p>
+        </div>
+
+        <div class="options">
+          <label class="checkbox-label" for="remember-me-checkbox">
+            <input type="checkbox" id="remember-me-checkbox" data-testid="remember-me-checkbox" name="remember" />
+            <span>Remember me</span>
+          </label>
+          <a href="#" id="forgot-password-link" data-testid="forgot-password-link">Forgot password?</a>
+        </div>
+
+        <!-- Inline message instead of alert(): browser dialogs block automation tools -->
+        <div id="forgot-password-message" data-testid="forgot-password-message" class="form-message" aria-live="polite"></div>
+
+        <button type="submit" id="login-btn" data-testid="login-btn" class="btn-primary">Login</button>
+
+        <div id="form-error" data-testid="form-error" class="form-message" aria-live="polite"></div>
+      </form>
+
+      <p class="hint" data-testid="demo-hint">
+        Demo user: <code>qa.tester@example.com</code> / <code>Test@1234</code>
+      </p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
